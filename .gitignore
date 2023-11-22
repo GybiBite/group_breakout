@@ -25,3 +25,4 @@ replay_pid*
 
 .settings/*
 !.settings/org.eclipse.jdt.core.prefs
+/bin/
