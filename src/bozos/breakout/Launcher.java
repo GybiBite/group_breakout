@@ -12,10 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
-interface Screen {
-	void render(Graphics2D g, float delta);
-}
-
 public class Launcher {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Pong");
@@ -44,7 +40,7 @@ class Pong extends JPanel {
 	long lastTime = System.currentTimeMillis();
 	long currTime = System.currentTimeMillis();
 
-	Screen currentScreen = game;
+	IScreen currentScreen = game;
 
 	public Pong() {
 		setPreferredSize(new Dimension(800, 600));
@@ -65,7 +61,7 @@ class Pong extends JPanel {
 		currTime = System.currentTimeMillis();
 
 		currentScreen.render(g, (currTime - lastTime) / 100F);
-		System.out.println((currTime - lastTime) / 100F);
+//		System.out.println((currTime - lastTime) / 100F);
 	}
 
 }

@@ -1,9 +1,8 @@
 package bozos.breakout;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class Menu implements Screen {
+public class Menu implements IScreen {
 
 	@Override
 	public void render(Graphics2D g, float delta) {

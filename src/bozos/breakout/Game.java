@@ -3,11 +3,14 @@ package bozos.breakout;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
-public class Game implements Screen {
+public class Game implements IScreen {
 
 	/** This variable stores the location and size of the ball */
 	Ellipse2D.Double ball = new Ellipse2D.Double(0, 0, 10, 10);
+	Rectangle2D.Double paddleOne = new Rectangle2D.Double(25, 250, 10, 100);
+	Rectangle2D.Double paddleTwo = new Rectangle2D.Double(765, 250, 10, 100);
 	
 	/** This is currently just an example velocity to make sure the ball works.</p>
 	 * This can be modified later when the game is more developed. */
@@ -24,8 +27,8 @@ public class Game implements Screen {
 	public void render(Graphics2D g, float delta) {
 		tick(delta);
 		g.setColor(Color.WHITE);
-		g.draw(ball);
-
+		g.draw(paddleOne);
+		g.draw(paddleTwo);
 	}
 
 	/**
