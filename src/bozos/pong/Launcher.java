@@ -1,4 +1,4 @@
-package bozos.breakout;
+package bozos.pong;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

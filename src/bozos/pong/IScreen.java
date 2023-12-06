@@ -1,4 +1,4 @@
-package bozos.breakout;
+package bozos.pong;
 
 import java.awt.Graphics2D;
 
