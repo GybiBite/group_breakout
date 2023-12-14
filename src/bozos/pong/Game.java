@@ -8,13 +8,13 @@ import java.awt.geom.Rectangle2D;
 public class Game implements IScreen {
 
 	/** This variable stores the location and size of the ball */
-	Ellipse2D.Double ball = new Ellipse2D.Double(0, 0, 10, 10);
+	Ellipse2D.Double ball = new Ellipse2D.Double(400, 300, 10, 10);
 	Rectangle2D.Double paddleOne = new Rectangle2D.Double(20, 250, 10, 100);
 	Rectangle2D.Double paddleTwo = new Rectangle2D.Double(755, 250, 10, 100);
 	
 	/** This is currently just an example velocity to make sure the ball works.</p>
 	 * This can be modified later when the game is more developed. */
-	float bvX = 10, bvY = 10;
+	float bvX = 10, bvY = 0;
 
 	/**
 	 * This method is the primary method to be called each game tick, as per the loop specified in the main function
@@ -39,5 +39,32 @@ public class Game implements IScreen {
 	private void tick(float delta) {
 		ball.x += bvX * delta;
 		ball.y += bvY * delta;
+		if((ball.y >= 556- ball.width)||( ball.y <= 0))
+		{
+			bvY = bvY *= -1;
+		}
+		if  ((ball.x >= 785 - ball.width)||( ball.x <= 0+ball.width))
+		{
+			ball.x = 400;
+			ball.y = 300;
+			bvY = 5;
+			bvX =10;
+			bvX = bvX *= -1;
+		}
+		if((ball.x <= paddleOne.x+paddleOne.width+ball.width)&&(ball.y<= paddleOne.y + paddleOne.height/2)&&(ball.y >= paddleOne.y - paddleOne.height/2))
+		{
+			
+			bvX = bvX *= -1;
+			bvX = bvX +5;
+			
+			
+		}
+		if((ball.x >= paddleTwo.x-paddleTwo.width-ball.width)&&(ball.y<= paddleTwo.y + paddleTwo.height/2)&&(ball.y >= paddleTwo.y - paddleTwo.height/2))
+		{
+			
+			bvX = bvX *= -1;
+			bvX = bvX -5;
+			
+		}
 	}
 }
