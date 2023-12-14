@@ -74,5 +74,22 @@ public class Game implements IScreen {
 			bvX = bvX -5;
 			
 		}
+		if(wPressed == true)
+		{
+			paddleOne.y += 3;
+		}
+		if(sPressed == true)
+		{
+			paddleOne.y -= 3;
+		}
+		if(upPressed == true)
+		{
+			paddleTwo.y += 3;
+		}
+		if (downPressed)
+		{
+			paddleTwo.y -=3;
+		}
+		
 	}
 }
