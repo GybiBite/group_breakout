@@ -22,8 +22,14 @@ public class Game implements IScreen {
 	
 	/** This is currently just an example velocity to make sure the ball works.</p>
 	 * This can be modified later when the game is more developed. */
-	float bvX = 10, bvY = 0;
+	float bvX = 10, bvY = 5;
 
+	//Player Scores :D
+	int p1Score = 0;
+	int p2Score = 0;
+	
+	//reset
+	Boolean ballReset = false;
 	/**
 	 * This method is the primary method to be called each game tick, as per the loop specified in the main function
 	 * 
@@ -45,14 +51,50 @@ public class Game implements IScreen {
 	 * @param delta Amount of time in seconds since last frame (Identical to delta given in {@link Game#render(Graphics2D, float)} )
 	 */
 	private void tick(float delta) {
+		if(ballReset == true)
+		{
+			ball.x = 400;
+			ball.y = 300;
+			bvY = 5;
+			bvX =10;
+			bvX = bvX *= -1;
+			p1Score += 1;
+			ballReset = false;
+		}
 		ball.x += bvX * delta;
 		ball.y += bvY * delta;
+		
+		int waitTimer = 5;
+		
+		
 		if((ball.y >= 556- ball.width)||( ball.y <= 0))
 		{
 			bvY = bvY *= -1;
 		}
-		if  ((ball.x >= 785 - ball.width)||( ball.x <= 0+ball.width))
+		if  (ball.x >= 785 - ball.width)
 		{
+			p1Score += 1;
+			ballReset = true;
+			try {
+				  Thread.sleep(2000);
+				} catch (InterruptedException e) {
+				  e.printStackTrace();
+				}
+		}
+		
+		
+		
+		if( ball.x <= 0+ball.width)
+		{
+			bvX = 0;
+			bvY=0;
+		
+			p2Score += 1;
+			try {
+				  Thread.sleep(2000);
+				} catch (InterruptedException e) {
+				  e.printStackTrace();
+				}
 			ball.x = 400;
 			ball.y = 300;
 			bvY = 5;
@@ -86,7 +128,7 @@ public class Game implements IScreen {
 		{
 			paddleTwo.y += 3;
 		}
-		if (downPressed)
+		if (downPressed == true)
 		{
 			paddleTwo.y -=3;
 		}
