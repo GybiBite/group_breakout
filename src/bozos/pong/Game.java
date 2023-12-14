@@ -12,6 +12,14 @@ public class Game implements IScreen {
 	Rectangle2D.Double paddleOne = new Rectangle2D.Double(20, 250, 10, 100);
 	Rectangle2D.Double paddleTwo = new Rectangle2D.Double(755, 250, 10, 100);
 	
+	/** The width of the screen, in pixels. */
+	static final int S_WIDTH = 800;
+	/** The height of the screen, in pixels. */
+	static final int S_HEIGHT = 600;
+	
+	/** Indicates whether the corresponding key is pressed on the keyboard */
+	static boolean wPressed, sPressed, upPressed, downPressed;
+	
 	/** This is currently just an example velocity to make sure the ball works.</p>
 	 * This can be modified later when the game is more developed. */
 	float bvX = 10, bvY = 0;
