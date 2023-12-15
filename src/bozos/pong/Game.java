@@ -29,7 +29,7 @@ public class Game {
 	static boolean wPressed, sPressed, upPressed, downPressed;
 
 	/**	Velocity of the ball */
-	float bvX = 10, bvY = 5;
+	float bvX = 10, bvY = 0;
 
 	// Player Scores :D
 	int p1Score = 0;
@@ -195,7 +195,7 @@ public class Game {
 			}
 		}
 		
-		if((ball.x >= paddleTwo.x-paddleTwo.width/2)&&(ball.y<= paddleTwo.y + paddleTwo.height/2 - ball.height)&&(ball.y >= paddleTwo.y - paddleTwo.height/2)&&(bvX >0))
+		if((ball.x+ball.width >= paddleTwo.x-paddleTwo.width)&&(ball.y <= paddleTwo.y +paddleTwo.height)&&(ball.y >= paddleTwo.y -paddleTwo.height+100)&&(bvX > 0))
 		{
 			bvX = bvX *= -1;
 			bvX = bvX -5;
