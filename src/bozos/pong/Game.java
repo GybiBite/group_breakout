@@ -64,7 +64,18 @@ public class Game {
 	 * @param delta Amount of time in seconds since last frame (Identical to delta given in {@link Game#render(Graphics2D, float)} )
 	 */
 	private void tick(float delta) {
+		if (p1Score ==3)
+		{
+			bvY = 0;
+			bvX = 0;
 		
+		}
+		if (p2Score ==3)
+		{
+			bvY = 0;
+			bvX = 0;
+		
+		}
 		if (System.currentTimeMillis() - ballTimer >= BALL_WAIT_TIME && ballReset) {
 			int newDirection = rand.nextBoolean() ? 1 : -1;
 			ball.x = 400;
@@ -109,25 +120,41 @@ public class Game {
 			
 			bvX *= -1;
 			bvX += 5;
+			if(bvY < 0)
+			{
+				bvY -= 5;
+			}
+			if(bvY > 0)
+			{
+				bvY += 5;
+			}
 		}
 		
-		if((ball.x >= paddleTwo.x-paddleTwo.width-ball.width)&&(ball.y<= paddleTwo.y + paddleTwo.height/2)&&(ball.y >= paddleTwo.y - paddleTwo.height/2))
+		if((ball.x >= paddleTwo.x-paddleTwo.width/2)&&(ball.y<= paddleTwo.y + paddleTwo.height/2 - ball.height)&&(ball.y >= paddleTwo.y - paddleTwo.height/2)&&(bvX >0))
 		{
 			bvX = bvX *= -1;
 			bvX = bvX -5;
+			if(bvY < 0)
+			{
+				bvY -= 5;
+			}
+			if(bvY > 0)
+			{
+				bvY += 5;
+			}
 		}
 		
 		if (wPressed) {
-			paddleOne.y -= 0.5f;
+			paddleOne.y -= 0.1f;
 		}
 		if (sPressed) {
-			paddleOne.y += 0.5f;
+			paddleOne.y += 0.1f;
 		}
 		if (upPressed) {
-			paddleTwo.y -= 0.5f;
+			paddleTwo.y -= 0.1f;
 		}
 		if (downPressed) {
-			paddleTwo.y += 0.5f;
+			paddleTwo.y += 0.1f;
 		}
 	}
 }
