@@ -1,10 +1,13 @@
 package bozos.pong;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Random;
+import javax.swing.JComponent;
 
 public class Game {
 
@@ -49,13 +52,65 @@ public class Game {
 	 * @param delta Variable representing the amount of time in between the last
 	 *              frame and the current frame. Necessary for consistent game speed
 	 *              across devices.
+	 * @return 
 	 */
+	
+	 
 	public void render(Graphics2D g, float delta) {
 		tick(delta);
 		g.setColor(Color.WHITE);
 		g.draw(paddleOne);
 		g.draw(paddleTwo);
 		g.draw(ball);
+		g.setFont(new Font("Arial",Font.PLAIN,60 ));
+		if(p1Score == 0)
+		{
+			g.drawString("0", S_WIDTH/2-220, 100);
+		}
+		if(p1Score == 1)
+		{
+			g.drawString("1", S_WIDTH/2-220, 100);
+		}
+		if(p1Score == 2)
+		{
+			g.drawString("2", S_WIDTH/2-220, 100);
+		}
+		if(p1Score == 3)
+		{
+			g.drawString("3", S_WIDTH/2-220, 100);
+		}
+		if(p2Score == 0)
+		{
+			g.drawString("0", S_WIDTH/2+220, 100);
+		}
+		if(p2Score == 1)
+		{
+			g.drawString("1", S_WIDTH/2+220, 100);
+		}
+		if(p2Score == 2)
+		{
+			g.drawString("2", S_WIDTH/2+220, 100);
+		}
+		if(p2Score == 3)
+		{
+			g.drawString("3", S_WIDTH/2+220, 100);
+		}
+		if(p1Score == 3)
+		{
+			g.drawString("Player 1 wins!", S_WIDTH/2-180, 100);
+		}
+		if (p2Score ==3)
+		{
+			g.drawString("Player 2 wins!", S_WIDTH/2-180, 100);
+		}
+		
+			
+	
+		
+		
+	}
+
+	{
 		
 	}
 
@@ -63,12 +118,21 @@ public class Game {
 	 * Local tick function for handling all game logic (although some of it is expected to be separated in discrete methods)
 	 * @param delta Amount of time in seconds since last frame (Identical to delta given in {@link Game#render(Graphics2D, float)} )
 	 */
+	
+		
+	
+			
+
+		
+	
 	private void tick(float delta) {
 		if (p1Score ==3)
 		{
 			bvY = 0;
 			bvX = 0;
-		
+			
+
+			
 		}
 		if (p2Score ==3)
 		{
@@ -76,6 +140,7 @@ public class Game {
 			bvX = 0;
 		
 		}
+		
 		if (System.currentTimeMillis() - ballTimer >= BALL_WAIT_TIME && ballReset) {
 			int newDirection = rand.nextBoolean() ? 1 : -1;
 			ball.x = 400;
