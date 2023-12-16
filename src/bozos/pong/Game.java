@@ -29,7 +29,7 @@ public class Game {
 	static boolean wPressed, sPressed, upPressed, downPressed;
 
 	/**	Velocity of the ball */
-	float bvX = 10, bvY = 0;
+	float bvX = 10, bvY = 5;
 
 	// Player Scores :D
 	int p1Score = 0;
@@ -65,19 +65,19 @@ public class Game {
 		g.setFont(new Font("Arial",Font.PLAIN,60 ));
 		if(p1Score == 0)
 		{
-			g.drawString("0", S_WIDTH/2-220, 100);
+			g.drawString("0", S_WIDTH/2-250, 100);
 		}
 		if(p1Score == 1)
 		{
-			g.drawString("1", S_WIDTH/2-220, 100);
+			g.drawString("1", S_WIDTH/2-250, 100);
 		}
 		if(p1Score == 2)
 		{
-			g.drawString("2", S_WIDTH/2-220, 100);
+			g.drawString("2", S_WIDTH/2-250, 100);
 		}
 		if(p1Score == 3)
 		{
-			g.drawString("3", S_WIDTH/2-220, 100);
+			g.drawString("3", S_WIDTH/2-250, 100);
 		}
 		if(p2Score == 0)
 		{
@@ -97,11 +97,11 @@ public class Game {
 		}
 		if(p1Score == 3)
 		{
-			g.drawString("Player 1 wins!", S_WIDTH/2-180, 100);
+			g.drawString("Player 1 wins!", S_WIDTH/2-180, 50);
 		}
 		if (p2Score ==3)
 		{
-			g.drawString("Player 2 wins!", S_WIDTH/2-180, 100);
+			g.drawString("Player 2 wins!", S_WIDTH/2-180, 50);
 		}
 		
 			
@@ -211,6 +211,7 @@ public class Game {
 		
 		if (wPressed) {
 			paddleOne.y -= 0.1f;
+	
 		}
 		if (sPressed) {
 			paddleOne.y += 0.1f;
@@ -220,6 +221,22 @@ public class Game {
 		}
 		if (downPressed) {
 			paddleTwo.y += 0.1f;
+		}
+		if(wPressed & !sPressed)
+		{
+			paddleOne.y = Math.max(paddleOne.height-100, paddleOne.y - 0.1f);
+		}
+			else if(sPressed & !wPressed)
+			{
+			paddleOne.y = Math.min(S_HEIGHT-paddleOne.height, paddleOne.y + 0.1f);
+			}
+		if(upPressed & !downPressed)
+		{
+			paddleTwo.y = Math.max(paddleTwo.height-100, paddleTwo.y - 0.1f);
+		}
+		else if(downPressed & !upPressed)
+		{
+			paddleTwo.y = Math.min(S_HEIGHT-paddleTwo.height, paddleTwo.y + 0.1f);
 		}
 	}
 }
