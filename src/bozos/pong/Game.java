@@ -104,13 +104,9 @@ public class Game {
 			g.drawString("Player 2 wins!", S_WIDTH/2-180, 50);
 		}
 		
-			
+		g.drawString("Player 2 wins!",xGenerator(1), yGenerator(1));
 	
-		
-		
-	}
-
-	{
+	
 		
 	}
 
@@ -121,6 +117,21 @@ public class Game {
 	
 		
 	
+			public static int xGenerator(int xThing)
+			{
+				int min = 0;
+				int max = 800;
+				int randomX = (int)Math.floor(Math.random() * (max-min+1)+min);
+				return randomX;
+			}
+			public static int yGenerator(int yThing)
+			{
+				int min = 0;
+				int max = 600;
+				int randomY = (int)Math.floor(Math.random() * (max-min+1)+min);
+				return randomY;
+				
+			}
 			
 
 		
